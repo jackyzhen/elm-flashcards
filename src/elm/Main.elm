@@ -2,6 +2,9 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick)
 
+-- component import example
+import Components.Hello exposing ( hello )
+
 main : Program Never Model Msg
 main =
   Html.beginnerProgram { model = model, view = view, update = update }
@@ -39,8 +42,9 @@ view : Model -> Html Msg
 view model =
   div []
     [
-      div[] [ img [ src "static/img/elm.jpg", style styles.img ] [] ]
-    ,  input [ placeholder "Story to point...", onInput Change] []
+      hello 6
+    , div[] [ img [ src "static/img/elm.jpg", style styles.img ] [] ]
+    , input [ placeholder "Story to point...", onInput Change] []
     , button [ onClick (Point 0) ] [ text "0" ]
     , button [ onClick (Point 1) ] [ text "1" ]
     , button [ onClick (Point 2) ] [ text "2" ]
