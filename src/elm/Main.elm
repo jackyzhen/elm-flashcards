@@ -40,21 +40,21 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-  div []
+  div [ class "container is-fluid" ]
     [
       hello 6
     , div[] [ img [ src "static/img/elm.jpg", style styles.img ] [] ]
     , input [ placeholder "Story to point...", onInput Change] []
-    , button [ onClick (Point 0) ] [ text "0" ]
-    , button [ onClick (Point 1) ] [ text "1" ]
-    , button [ onClick (Point 2) ] [ text "2" ]
-    , button [ onClick (Point 3) ] [ text "3" ]
-    , button [ onClick (Point 5) ] [ text "5" ]
-    , button [ onClick (Point 8) ] [ text "8" ]
-    , button [ onClick (Point 13) ] [ text "13" ]
-    , button [ onClick (Point 20) ] [ text "20" ]
-    , button [ onClick (Point 40) ] [ text "40" ]
-    , button [ onClick (Point 100) ] [ text "100" ]
+    , button [ class "button is-primary", onClick (Point 0) ] [ text "0" ]
+    , button [ class "button is-primary", onClick (Point 1) ] [ text "1" ]
+    , button [ class "button is-primary", onClick (Point 2) ] [ text "2" ]
+    , button [ class "button is-primary", onClick (Point 3) ] [ text "3" ]
+    , button [ class "button is-primary", onClick (Point 5) ] [ text "5" ]
+    , button [ class "button is-primary", onClick (Point 8) ] [ text "8" ]
+    , button [ class "button is-primary", onClick (Point 13) ] [ text "13" ]
+    , button [ class "button is-primary", onClick (Point 20) ] [ text "20" ]
+    , button [ class "button is-primary", onClick (Point 40) ] [ text "40" ]
+    , button [ class "button is-primary", onClick (Point 100) ] [ text "100" ]
     , div [] [ text ("Story: " ++ .content model) ] -- trying weird record property access syntax
     , div [] [ text ("Points: " ++ toString model.points) ]
     ]
