@@ -1,16 +1,16 @@
 {
-  "name": "pokerface",
+  "name": "elm-todo",
   "version": "1.0.0",
-  "description": "Scrum poker app built with elm.",
+  "description": "todo list with elm",
   "main": "index.js",
-  "repository": "git@github.com:jackyzhen/pokerface.git",
+  "repository": "git@github.com:jackyzhen/elm-todo.git",
   "author": "Jacky Zhen <jacky.s.zhen@gmail.com>",
   "license": "BSD3",
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
     "build": "rimraf dist && webpack",
     "reinstall": "npm i rimraf && rimraf node_modules && npm uninstall -g elm && npm i -g elm && npm i && elm package install",
-    "deploy": "npm run build && now --static dist -a pokerface"
+    "deploy": "npm run build && now --static dist -a elm-todo"
   },
   "dependencies": {},
   "devDependencies": {

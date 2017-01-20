@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "summary": "Scrum poker app built with elm.",
-    "repository": "https://github.com/jackyzhen/pokerface.git",
+    "summary": "simple todo list with elm",
+    "repository": "https://github.com/jackyzhen/elm-todo.git",
     "license": "BSD3",
     "source-directories": [
         "src/elm"
