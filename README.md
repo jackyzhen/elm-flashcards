@@ -1,7 +1,8 @@
 # elm-todo
-simple todo list with elm
+simple todo list with elm bootstrapped via [https://github.com/moarwick/elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter)
+
 ![image of elm-todo](http://i.imgur.com/kvm7CXm.gif)
-Bootstrapped via [https://github.com/moarwick/elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter)
+
 
 ## Usage
 
