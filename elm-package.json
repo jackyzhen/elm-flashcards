@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "summary": "simple todo list with elm",
-    "repository": "https://github.com/jackyzhen/elm-todo.git",
+    "summary": "Flash cards app to help studying, built with elm.",
+    "repository": "https://github.com/jackyzhen/elm-flashcards.git",
     "license": "BSD3",
     "source-directories": [
         "src/elm"

@@ -1,7 +1,5 @@
 # elm-todo
-simple todo list with elm bootstrapped via [https://github.com/moarwick/elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter)
-
-![image of elm-todo](http://i.imgur.com/kvm7CXm.gif)
+A flash cards app to help studying. Built with  Elm, bootstrapped via [https://github.com/moarwick/elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter)
 
 
 ## Usage
