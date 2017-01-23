@@ -4,6 +4,7 @@ import Routing
 import Game.Model
 import Student.Models
 import Tutor.Models
+import Flashcards.Models
 
 
 type alias Model =
@@ -11,6 +12,7 @@ type alias Model =
     , game : Game.Model.Model
     , tutor : Maybe Tutor.Models.Tutor
     , students : Student.Models.Students
+    , flashcards : List Flashcards.Models.Flashcard
     }
 
 
@@ -20,4 +22,5 @@ initialModel route =
     , game = Game.Model.initialModel
     , tutor = Nothing
     , students = []
+    , flashcards = []
     }

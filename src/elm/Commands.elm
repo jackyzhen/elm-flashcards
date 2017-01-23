@@ -3,6 +3,7 @@ module Commands exposing (..)
 import Student.Commands exposing (..)
 import Game.Commands exposing (..)
 import Tutor.Commands exposing (..)
+import Flashcards.Commands exposing (..)
 import Routing exposing (Route(..))
 import Messages exposing (Msg(..))
 
@@ -21,6 +22,9 @@ loadOnRouteChange route =
 
         TutorStudentsRoute ->
             Cmd.map StudentMsg fetchStudent
+
+        TutorFlashCardsRoute ->
+            Cmd.map FlashcardMsg fetchFlashcards
 
         _ ->
             Cmd.none

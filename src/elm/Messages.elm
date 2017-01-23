@@ -5,6 +5,7 @@ import Home.Messages
 import Student.Messages
 import Tutor.Messages
 import Game.Messages
+import Flashcards.Messages
 
 
 type Msg
@@ -13,3 +14,4 @@ type Msg
     | StudentMsg Student.Messages.Msg
     | TutorMsg Tutor.Messages.Msg
     | GameMsg Game.Messages.Msg
+    | FlashcardMsg Flashcards.Messages.Msg
