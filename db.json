@@ -78,34 +78,20 @@
     {
       "id": "1",
       "question": "What is the capital of China?",
-      "subjectId": "1",
+      "subject": "Geography",
       "answer": "Beijing"
     },
     {
       "id": "2",
       "question": "What is the formula for calculating the area of a circle?",
-      "subjectId": "2",
+      "subject": "Math",
       "answer": "A=πr2"
     },
     {
       "id": "3",
       "question": "What is the first freedom of Free Software?",
-      "subjectId": "3",
+      "subject": "Software",
       "answer": "The freedom to run the software as you wish, for any purpose."
-    }
-  ],
-  "subjects": [
-    {
-      "id": "1",
-      "name": "Geography"
-    },
-    {
-      "id": "2",
-      "name": "Math"
-    },
-    {
-      "id": "3",
-      "name": "Software"
     }
   ]
 }
