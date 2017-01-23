@@ -1,4 +1,4 @@
-module Game exposing (..)
+module Game.Game exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -48,7 +48,8 @@ init =
 type Msg
     = FlashCardMsg Components.FlashCard.Msg
     | OnAnswerSubmit String
-
+    | SwapOutFlashCards (List Components.FlashCard.Model)
+    | NextFlashCard 
 
 
 -- VIEW
@@ -88,3 +89,7 @@ update msg model =
               Nothing  -> (model, Cmd.none)
         OnAnswerSubmit answer ->
           (model, Cmd.none) --TODO: implement this action
+        SwapOutFlashCards newFlashCards ->
+          ({model | flashCards = newFlashCards}, Cmd.none)
+        NextFlashCard ->
+          (model, Cmd.none) -- TODO: implement this action
