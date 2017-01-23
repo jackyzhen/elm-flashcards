@@ -1,6 +1,7 @@
 module Commands exposing (..)
 
 import Student.Commands exposing (..)
+import Game.Commands exposing (..)
 import Routing exposing (Route(..))
 import Messages exposing (Msg(..))
 
@@ -11,5 +12,7 @@ loadOnRouteChange route =
         ClientRoute ->
             Cmd.map StudentMsg fetchStudent
 
+        StudentPlayRoute ->
+            Cmd.map GameMsg fetchQuestions
         _ ->
             Cmd.none
