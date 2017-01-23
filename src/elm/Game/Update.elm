@@ -33,7 +33,7 @@ getNextFlashCardId model =
     model.currentFlashCardId :: model.answeredFlashCardIds
   in
     model.flashCards
-    |> List.filter (\x -> (List.member x.id usedFlashCardIds))
+    |> List.filter (\x -> (not (List.member x.id usedFlashCardIds)))
     |> List.head
     |> getFlashCardId
 

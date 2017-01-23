@@ -27,7 +27,7 @@ view model =
                         input [ class "control answerBox input", placeholder "Enter your answer", onInput Game.Messages.OnAnswerUpdated ] [],
                         button [ class "control submitButton button is-primary", onClick Game.Messages.OnAnswerSubmit ] [text "Submit"],
                         (if flashCard.answerVisible 
-                            then button [ class "control nextButton button is-secondary" ] [ text "Next" ]
+                            then button [ class "control nextButton button is-secondary", onClick Game.Messages.NextFlashCard ] [ text "Next" ]
                             else text ""
                         )
                       ]
