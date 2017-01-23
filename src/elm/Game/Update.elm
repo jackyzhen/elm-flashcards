@@ -87,7 +87,7 @@ update msg model =
                   Just flashCard -> 
                     ( { model | flashCards = (updateFlashCard model.flashCards {flashCard | answerVisible = True })
                               , validationMessage = Nothing}
-                      , Game.Commands.saveAnswer (Answer model.sessionId flashCard.id model.currentInput) )
+                      , Game.Commands.saveAnswer (Answer model.sessionId flashCard.id model.currentInput (model.sessionId ++ flashCard.id ++ model.currentInput) ) )
                   Nothing  -> (model, Cmd.none)
             )
         Game.Messages.OnFetchQuestions (Ok newFlashCards) ->

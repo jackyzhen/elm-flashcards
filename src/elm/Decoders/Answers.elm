@@ -17,6 +17,7 @@ memberAnswerDecoder =
     |> required "sessionId" string
     |> required "questionId" string
     |> required "answer" string
+    |> required "id" string
 
 memberAnswerEncoder : Answer -> Encode.Value
 memberAnswerEncoder answer =
@@ -25,6 +26,7 @@ memberAnswerEncoder answer =
             [ ( "sessionId", Encode.string answer.sessionId )
             , ( "questionId", Encode.string answer.questionId )
             , ( "answer", Encode.string answer.answer )
+            , ( "id", Encode.string answer.id)
             ]
     in
         list
