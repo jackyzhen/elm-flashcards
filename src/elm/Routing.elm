@@ -19,7 +19,7 @@ matchers =
         [ map HomeRoute top
         , map ClientRoute (s "client")
         , map TutorRoute (s "tutor")
-        , map StudentPlayRoute (s "play")
+        , map StudentPlayRoute (s "client" </> s "play")
         , map StudentHistoryRoute (s "history")
         ]
 
