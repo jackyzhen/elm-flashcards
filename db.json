@@ -2,11 +2,28 @@
   "students": [
     {
       "id": "1",
-      "name": "Sally"
+      "name": "Sally Cohen",
+      "subject": "Math"
     },
     {
       "id": "2",
-      "name": "Lance"
+      "name": "Lance Armstrong",
+      "subject": "Geography"
+    },
+    {
+      "id": "3",
+      "name": "Ethan Smith",
+      "subject": "Software"
+    },
+    {
+      "id": "4",
+      "name": "Ding Xiao Ping",
+      "subject": "Communism"
+    },
+    {
+      "id": "5",
+      "name": "Mao Ze Dong",
+      "subject": "Political Science"
     }
   ],
   "sessions": [
@@ -67,6 +84,11 @@
     },
     {
       "id": "12",
+      "datetime": "",
+      "studentId": ""
+    },
+    {
+      "id": "13",
       "datetime": "",
       "studentId": ""
     }
