@@ -13,8 +13,8 @@ type alias Model =
     }
 
 
-inititialModel : Model
-inititialModel =
+initialModel : Model
+initialModel =
     { flashCards =
         [ { id = "1"
           , question = "what is the capital of china?"

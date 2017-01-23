@@ -15,6 +15,6 @@ type alias Model =
 initialModel : Routing.Route -> Model
 initialModel route =
     { route = route
-    , game = Game.Model.inititialModel
+    , game = Game.Model.initialModel
     , student = Nothing
     }

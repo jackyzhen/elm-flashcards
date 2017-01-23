@@ -75,7 +75,7 @@ update msg model =
                   Nothing  -> (model, Cmd.none)
             )
         Game.Messages.SwapOutFlashCards newFlashCards ->
-          ({model | flashCards = newFlashCards}, Cmd.none)
+          ({model | flashCards = newFlashCards}, Cmd.none) -- TODO: This should also update the current flash card?
         Game.Messages.NextFlashCard ->
           let
             nextFlashCardId = getNextFlashCardId model
@@ -89,4 +89,4 @@ update msg model =
               }
             , Cmd.none)
         Game.Messages.ResetGame ->
-          (model, Cmd.none) --TODO: Implement this function properly.
+          (Game.Model.initialModel, Cmd.none) --TODO: Is this okay? This seems like a pretty lazy implementation and it also nukes all of the existing questions?

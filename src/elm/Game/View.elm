@@ -22,12 +22,12 @@ getFlashCardView model =
                     Just message -> div [ class "validationMessage" ] [ text message ]
                     Nothing -> text ""),
                     div [ class "" ] [
-                    input [ class "control answerBox input", placeholder "Enter your answer", onInput Game.Messages.OnAnswerUpdated ] [],
-                    button [ class "control submitButton button is-primary", onClick Game.Messages.OnAnswerSubmit ] [text "Submit"],
-                    (if flashCard.answerVisible 
-                        then button [ class "control nextButton button is-secondary", onClick Game.Messages.NextFlashCard ] [ text "Next" ]
-                        else text ""
-                    )
+                      input [ class "control answerBox input", placeholder "Enter your answer", onInput Game.Messages.OnAnswerUpdated ] [],
+                      button [ class "control submitButton button is-primary", onClick Game.Messages.OnAnswerSubmit ] [text "Submit"],
+                      (if flashCard.answerVisible 
+                          then button [ class "control nextButton button is-secondary", onClick Game.Messages.NextFlashCard ] [ text "Next" ]
+                          else text ""
+                      )
                     ]
                 ]
             Nothing ->
@@ -40,5 +40,8 @@ view model =
         [ 
           if not model.isGameComplete
             then getFlashCardView model
-            else div [class "complete container"] [ h1 [class "title"] [text "You have finished this session"]]
+            else div [class "complete container"] 
+                     [ h1 [class "title"] [text "You have finished this session"]
+                     , button [class "button is-info", onClick Game.Messages.ResetGame] [text "Start Again"]
+                     ]
         ]
