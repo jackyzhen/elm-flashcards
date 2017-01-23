@@ -37,10 +37,10 @@ type Msg
 
 view : Model -> Html Msg
 view model =
-    div [ class "flashCard"]
+    div [ class "container flashCard"]
         [ 
-          h2 [ class "question"] [text model.question],
-          h3 [ class "answer" ] [text (if model.answerVisible then model.answer else "")]
+          h1 [ class "title question"] [text model.question],
+          h2 [ class "subtitle answer" ] [text (if model.answerVisible then model.answer else "")]
         ]
 
 

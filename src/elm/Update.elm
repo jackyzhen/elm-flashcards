@@ -6,7 +6,7 @@ import Models exposing (Model)
 import Routing exposing (parseLocation)
 import Home.Update
 import Student.Update
-import Game.Game
+import Game.Update
 import Commands exposing (..)
 
 
@@ -37,6 +37,6 @@ update msg model =
         GameMsg subMsg ->
             let
                 ( updatedModel, cmd ) =
-                    Game.Game.update subMsg model.game
+                    Game.Update.update subMsg model.game
             in
                 ( { model | game = updatedModel }, Cmd.map GameMsg cmd )
