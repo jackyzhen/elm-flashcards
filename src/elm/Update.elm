@@ -7,6 +7,7 @@ import Routing exposing (parseLocation)
 import Home.Update
 import Student.Update
 import Game.Update
+import Tutor.Update
 import Commands exposing (..)
 
 
@@ -40,3 +41,10 @@ update msg model =
                     Game.Update.update subMsg model.game
             in
                 ( { model | game = updatedModel }, Cmd.map GameMsg cmd )
+
+        TutorMsg subMsg ->
+            let
+                ( updatedModel, cmd ) =
+                    Tutor.Update.update subMsg model.tutor
+            in
+                ( { model | tutor = updatedModel }, Cmd.map TutorMsg cmd )

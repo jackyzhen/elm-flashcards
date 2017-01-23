@@ -13,6 +13,6 @@ type alias Student =
 
 new : Student
 new =
-    { id = "1"
-    , name = "Steve"
+    { id = ""
+    , name = ""
     }
