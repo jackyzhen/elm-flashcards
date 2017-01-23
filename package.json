@@ -7,15 +7,17 @@
   "author": "Jacky Zhen <jacky.s.zhen@gmail.com>",
   "license": "BSD3",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "build": "rimraf dist && webpack",
-    "reinstall": "npm i rimraf && rimraf node_modules && npm uninstall -g elm && npm i -g elm && npm i && elm package install",
-    "deploy": "npm run build && now --static dist -a elm-flashcards"
+    "api": "node api.js",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --port 3000"
   },
-  "dependencies": {},
+  "dependencies": {
+    "json-server": "^0.9.4"
+  },
   "devDependencies": {
-    "bulma": "0.2.0",
     "autoprefixer": "^6.3.6",
+    "bulma": "0.2.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
     "elm": "^0.18.0",
