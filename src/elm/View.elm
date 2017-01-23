@@ -6,6 +6,7 @@ import Models exposing (Model)
 import Routing exposing (Route(..))
 import Home.View
 import Student.View
+import Tutor.View
 import Game.View
 
 
@@ -25,7 +26,7 @@ page model =
             Html.map StudentMsg (Student.View.view model.student)
 
         TutorRoute ->
-            tutorView
+            Html.map TutorMsg (Tutor.View.view model.tutor)
 
         StudentPlayRoute ->
             Html.map GameMsg (Game.View.view model.game)
