@@ -10,6 +10,7 @@ type alias Model =
     , answeredFlashCardIds : List String
     , validationMessage: Maybe String
     , isGameComplete: Bool
+    , sessionId: String
     }
 
 
@@ -21,4 +22,5 @@ initialModel =
     , answeredFlashCardIds = []
     , validationMessage = Nothing
     , isGameComplete = False
+    , sessionId = ""
     }
