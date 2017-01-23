@@ -9,6 +9,8 @@ import Student.View
 import Tutor.View
 import Game.View
 import Flashcards.List
+import Flashcards.Models exposing (FlashcardId)
+import Flashcards.Single
 
 
 view : Model -> Html Msg
@@ -38,11 +40,30 @@ page model =
         TutorFlashCardsRoute ->
             Html.map FlashcardMsg (Flashcards.List.view model.flashcards)
 
+        EditFlashCardRoute flashcardId ->
+            flashcardEditPage model flashcardId
+
         StudentHistoryRoute ->
             notFoundView
 
         NotFoundRoute ->
             notFoundView
+
+
+flashcardEditPage : Model -> FlashcardId -> Html Msg
+flashcardEditPage model flashcardId =
+    let
+        maybeFlashcard =
+            model.flashcards
+                |> List.filter (\card -> card.id == flashcardId)
+                |> List.head
+    in
+        case maybeFlashcard of
+            Just card ->
+                Html.map FlashcardMsg (Flashcards.Single.view card)
+
+            Nothing ->
+                notFoundView
 
 
 notFoundView : Html msg

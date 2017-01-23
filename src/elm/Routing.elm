@@ -10,6 +10,7 @@ type Route
     | TutorRoute
     | TutorStudentsRoute
     | TutorFlashCardsRoute
+    | EditFlashCardRoute String
     | NotFoundRoute
     | StudentPlayRoute
     | StudentHistoryRoute
@@ -23,6 +24,7 @@ matchers =
         , map TutorRoute (s "tutor")
         , map TutorStudentsRoute (s "tutor" </> s "students")
         , map TutorFlashCardsRoute (s "tutor" </> s "flashcards")
+        , map EditFlashCardRoute (s "tutor" </> s "flashcards" </> string)
         , map StudentPlayRoute (s "client" </> s "play")
         , map StudentHistoryRoute (s "history")
         ]
