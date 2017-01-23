@@ -4,10 +4,23 @@ import Game.FlashCard exposing (..)
 import Game.Messages exposing (Msg)
 import Game.Model exposing (..)
 
+import Models.Session exposing (Session)
+
 coerceString: Maybe String -> String
 coerceString m = case m of 
       Just s -> s
       Nothing -> ""
+
+getNextSessionId: List Session -> String
+getNextSessionId sessions =
+  sessions
+  |> List.map (\s -> s.id)
+  |> List.map (\s -> Result.withDefault 0 (String.toInt s))
+  |> List.maximum
+  |> (\id -> 
+        case id of
+        Just val -> (toString (val + 1))
+        Nothing -> "1")
 
 getCurrentFlashCard: Game.Model.Model -> Maybe Game.FlashCard.Model
 getCurrentFlashCard model = 
@@ -82,6 +95,10 @@ update msg model =
             }, Cmd.none) 
         Game.Messages.OnFetchQuestions (Err error) ->
           (model, Cmd.none) --TODO: Do we actually do nothing if we cannot fetch questions?
+        Game.Messages.OnFetchSessions (Ok sessions) ->
+          ({model | sessionId = (getNextSessionId sessions)}, Cmd.none) 
+        Game.Messages.OnFetchSessions (Err error) ->
+          (model, Cmd.none) --TODO: Do we actually do nothing if we cannot fetch sessions?
         Game.Messages.NextFlashCard ->
           let
             nextFlashCardId = getNextFlashCardId model

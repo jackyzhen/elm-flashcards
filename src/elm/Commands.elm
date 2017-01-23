@@ -15,7 +15,8 @@ loadOnRouteChange route =
             Cmd.map StudentMsg fetchStudent
 
         StudentPlayRoute ->
-            Cmd.map GameMsg fetchQuestions
+            Cmd.batch [ fetchQuestions, fetchSessions]
+            |> Cmd.map GameMsg
 
         TutorRoute ->
             Cmd.map TutorMsg fetchTutor

@@ -1,32 +1,37 @@
 module Game.Commands exposing (..)
 
 import Http
-import Json.Decode as Decode exposing (field, Decoder, string)
-import Json.Decode.Pipeline exposing (decode, required, hardcoded)
 import Game.Messages exposing (Msg)
-import Game.FlashCard exposing (Model)
 
+import Decoders.Questions exposing (collectionQuestionDecoder)
+import Decoders.Sessions exposing (collectionSessionDecoder)
+
+-- QUESTIONS
+questionsUrl : String
+questionsUrl =
+    "http://localhost:4000/questions"
 
 fetchQuestions : Cmd Msg
 fetchQuestions =
-    Http.get fetchQuestionsUrl collectionDecoder
+    Http.get questionsUrl collectionQuestionDecoder
         |> Http.send Game.Messages.OnFetchQuestions
 
 
-fetchQuestionsUrl : String
-fetchQuestionsUrl =
-    "http://localhost:4000/questions"
+-- SESSIONS
+
+sessionsUrl : String
+sessionsUrl =
+    "http://localhost:4000/sessions"
+
+fetchSessions : Cmd Msg
+fetchSessions =
+    Http.get sessionsUrl collectionSessionDecoder
+        |> Http.send Game.Messages.OnFetchSessions
 
 
-collectionDecoder : Decode.Decoder (List Game.FlashCard.Model)
-collectionDecoder =
-    Decode.list memberDecoder
 
+-- ANSWERS
 
-memberDecoder : Decode.Decoder Game.FlashCard.Model
-memberDecoder =
-    decode Game.FlashCard.Model
-    |> required "id" string
-    |> required "question" string
-    |> required "answer" string
-    |> hardcoded False
+answersUrl : String
+answersUrl =
+    "http://localhost:4000/answers"
