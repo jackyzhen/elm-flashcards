@@ -1,0 +1,72 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "Sally"
+    },
+    {
+      "id": "2",
+      "name": "Lance"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "1",
+      "datetime": "2017-01-01",
+      "studentId": "1"
+    },
+    {
+      "id": "2",
+      "datetime": "2017-01-02",
+      "studentId": "1"
+    }
+  ],
+  "answers": [
+    {
+      "sessionId": "1",
+      "questionId": "1",
+      "answer": "Shanghai?"
+    },
+    {
+      "sessionId": "1",
+      "questionId": "2",
+      "answer": "2 * pi * radius?"
+    }
+  ],
+  "tutors": [
+    {
+      "id": "1",
+      "name": "Sanchit",
+      "students": ["1"]
+    },
+    {
+      "id": "2",
+      "name": "Jacky",
+      "students": ["2"]
+    }
+  ],
+  "questions": [
+    {
+      "id": "1",
+      "question": "What is the capital of China?",
+      "subjectId": "1",
+      "answer": "Beijing"
+    },
+    {
+      "id": "2",
+      "question": "What is the formular for calculating the area of a circle?",
+      "subjectId": "2",
+      "answer": "A=πr2"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "1",
+      "name": "Geography"
+    },
+    {
+      "id": "2",
+      "name": "Math"
+    }
+  ]
+}
