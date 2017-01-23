@@ -1,19 +1,10 @@
 module Game.Game exposing (..)
-
-import Html exposing (..)
-import Html.Attributes exposing (..)
-
 import Components.FlashCard exposing (..)
 
-type alias Model =
-    {
-      flashCards: List Components.FlashCard.Model,
-      currentInput: String,
-      currentFlashCardId: String,
-      answeredFlashCardIds: List String
-    }
+import Game.Messages exposing (Msg)
+import Game.Model exposing (Model)
 
-getCurrentFlashCard: Model -> Maybe Components.FlashCard.Model
+getCurrentFlashCard: Game.Model.Model -> Maybe Components.FlashCard.Model
 getCurrentFlashCard model = 
   model.flashCards
   |> List.filter (\flashCard -> flashCard.id == model.currentFlashCardId)
@@ -30,52 +21,11 @@ updateFlashCard list newFlashCard =
   in
     List.map replace list
 
-init : ( Model, Cmd Msg )
-init =
-    ( {
-        flashCards = [],
-        currentInput = "",
-        currentFlashCardId = "",
-        answeredFlashCardIds = []
-      }
-      ,Cmd.none )
 
-
-
--- MESSAGES
-
-
-type Msg
-    = FlashCardMsg Components.FlashCard.Msg
-    | OnAnswerSubmit String
-    | SwapOutFlashCards (List Components.FlashCard.Model)
-    | NextFlashCard 
-
-
--- VIEW
-
-
-view : Model -> Html Msg
-view model =
-    div [ class "gameContainer"]
-        [ 
-          let
-            flashCardMaybe = (getCurrentFlashCard model)
-          in
-            case flashCardMaybe of
-              Just flashCard -> Html.map FlashCardMsg (Components.FlashCard.view flashCard)
-              Nothing -> div [ class "noCard" ] [ text "Flash Card Not Found"]
-        ]
-
-
-
--- UPDATE
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : Game.Messages.Msg -> Game.Model.Model -> ( Game.Model.Model, Cmd Game.Messages.Msg )
 update msg model =
     case msg of
-        FlashCardMsg subMsg ->
+        Game.Messages.FlashCardMsg subMsg ->
           let
             flashCardMaybe = (getCurrentFlashCard model)
           in
@@ -85,11 +35,11 @@ update msg model =
                     ( updatedFlashCardModel, flashCardCmd ) =
                         Components.FlashCard.update subMsg flashCard
                 in
-                    ( { model | flashCards = (updateFlashCard model.flashCards updatedFlashCardModel)}, Cmd.map FlashCardMsg flashCardCmd )
+                    ( { model | flashCards = (updateFlashCard model.flashCards updatedFlashCardModel)}, Cmd.map Game.Messages.FlashCardMsg flashCardCmd )
               Nothing  -> (model, Cmd.none)
-        OnAnswerSubmit answer ->
+        Game.Messages.OnAnswerSubmit answer ->
           (model, Cmd.none) --TODO: implement this action
-        SwapOutFlashCards newFlashCards ->
+        Game.Messages.SwapOutFlashCards newFlashCards ->
           ({model | flashCards = newFlashCards}, Cmd.none)
-        NextFlashCard ->
+        Game.Messages.NextFlashCard ->
           (model, Cmd.none) -- TODO: implement this action
