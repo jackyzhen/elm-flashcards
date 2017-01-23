@@ -2,23 +2,11 @@
   "students": [
     {
       "id": "1",
-      "name": "Sally Wilkins",
-      "subject": "Maths"
+      "name": "Sally"
     },
     {
       "id": "2",
-      "name": "Lance Armstrong",
-      "subject": "English"
-    },
-    {
-      "id": "3",
-      "name": "Steve Jones",
-      "subject": "Science"
-    },
-    {
-      "id": "4",
-      "name": "Mei Xiao Yu",
-      "subject": "History"
+      "name": "Lance"
     }
   ],
   "sessions": [
@@ -31,6 +19,31 @@
       "id": "2",
       "datetime": "2017-01-02",
       "studentId": "1"
+    },
+    {
+      "id": "3",
+      "datetime": "",
+      "studentId": ""
+    },
+    {
+      "id": "4",
+      "datetime": "",
+      "studentId": ""
+    },
+    {
+      "id": "5",
+      "datetime": "",
+      "studentId": ""
+    },
+    {
+      "id": "6",
+      "datetime": "",
+      "studentId": ""
+    },
+    {
+      "id": "7",
+      "datetime": "",
+      "studentId": ""
     }
   ],
   "answers": [
@@ -49,12 +62,16 @@
     {
       "id": "1",
       "name": "Sanchit",
-      "students": ["1"]
+      "students": [
+        "1"
+      ]
     },
     {
       "id": "2",
       "name": "Jacky",
-      "students": ["2"]
+      "students": [
+        "2"
+      ]
     }
   ],
   "questions": [

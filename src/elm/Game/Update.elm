@@ -3,8 +3,10 @@ import Game.FlashCard exposing (..)
 
 import Game.Messages exposing (Msg)
 import Game.Model exposing (..)
+import Game.Commands exposing (..)
 
 import Models.Session exposing (Session)
+import Models.Answer exposing (Answer)
 
 coerceString: Maybe String -> String
 coerceString m = case m of 
@@ -84,7 +86,8 @@ update msg model =
                 case flashCardMaybe of
                   Just flashCard -> 
                     ( { model | flashCards = (updateFlashCard model.flashCards {flashCard | answerVisible = True })
-                              , validationMessage = Nothing}, Cmd.none )
+                              , validationMessage = Nothing}
+                      , Game.Commands.saveAnswer (Answer model.sessionId flashCard.id model.currentInput) )
                   Nothing  -> (model, Cmd.none)
             )
         Game.Messages.OnFetchQuestions (Ok newFlashCards) ->
@@ -96,9 +99,21 @@ update msg model =
         Game.Messages.OnFetchQuestions (Err error) ->
           (model, Cmd.none) --TODO: Do we actually do nothing if we cannot fetch questions?
         Game.Messages.OnFetchSessions (Ok sessions) ->
-          ({model | sessionId = (getNextSessionId sessions)}, Cmd.none) 
+          let
+            newSessionId = (getNextSessionId sessions)
+          in
+            ({model | sessionId = newSessionId}
+            ,(Game.Commands.saveSession (Session newSessionId "" "") )) 
         Game.Messages.OnFetchSessions (Err error) ->
           (model, Cmd.none) --TODO: Do we actually do nothing if we cannot fetch sessions?
+        Game.Messages.OnSessionSaved (Ok sessions) ->
+          (model, Cmd.none) 
+        Game.Messages.OnSessionSaved (Err error) ->
+          (model, Cmd.none) 
+        Game.Messages.OnAnswerSaved (Ok answers) ->
+          (model, Cmd.none) 
+        Game.Messages.OnAnswerSaved (Err error) ->
+          (model, Cmd.none)
         Game.Messages.NextFlashCard ->
           let
             nextFlashCardId = getNextFlashCardId model
