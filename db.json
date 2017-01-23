@@ -2,11 +2,23 @@
   "students": [
     {
       "id": "1",
-      "name": "Sally"
+      "name": "Sally Wilkins",
+      "subject": "Maths"
     },
     {
       "id": "2",
-      "name": "Lance"
+      "name": "Lance Armstrong",
+      "subject": "English"
+    },
+    {
+      "id": "3",
+      "name": "Steve Jones",
+      "subject": "Science"
+    },
+    {
+      "id": "4",
+      "name": "Mei Xiao Yu",
+      "subject": "History"
     }
   ],
   "sessions": [
@@ -74,7 +86,7 @@
       "id": "2",
       "name": "Math"
     },
-    { 
+    {
       "id": "3",
       "name": "Software"
     }

@@ -5,17 +5,17 @@ import Student.Models exposing (Student)
 import Navigation
 
 
-update : Msg -> Maybe Student -> ( Maybe Student, Cmd Msg )
-update message student =
+update : Msg -> List Student -> ( List Student, Cmd Msg )
+update message students =
     case message of
         ShowPlay ->
-            ( student, Navigation.newUrl "/client/play" )
+            ( students, Navigation.newUrl "/client/play" )
 
         ShowHistory ->
-            ( student, Navigation.newUrl "/client/history" )
+            ( students, Navigation.newUrl "/client/history" )
 
         OnFetchStudent (Ok students) ->
-            ( List.head students, Cmd.none )
+            ( students, Cmd.none )
 
         OnFetchStudent (Err error) ->
-            ( student, Cmd.none )
+            ( students, Cmd.none )

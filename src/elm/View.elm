@@ -23,13 +23,19 @@ page model =
             Html.map HomeMsg (Home.View.view model)
 
         ClientRoute ->
-            Html.map StudentMsg (Student.View.view model.student)
+            Html.map StudentMsg (Student.View.view model.students)
 
         TutorRoute ->
             Html.map TutorMsg (Tutor.View.view model.tutor)
 
         StudentPlayRoute ->
             Html.map GameMsg (Game.View.view model.game)
+
+        TutorStudentsRoute ->
+            Html.map StudentMsg (Student.View.listView model.students)
+
+        TutorFlashCardsRoute ->
+            notFoundView
 
         StudentHistoryRoute ->
             notFoundView
@@ -42,18 +48,4 @@ notFoundView : Html msg
 notFoundView =
     div []
         [ text "Not found"
-        ]
-
-
-studentView : Html msg
-studentView =
-    div []
-        [ text "student"
-        ]
-
-
-tutorView : Html msg
-tutorView =
-    div []
-        [ text "tutor"
         ]

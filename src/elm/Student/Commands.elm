@@ -24,6 +24,7 @@ collectionDecoder =
 
 memberDecoder : Decode.Decoder Student
 memberDecoder =
-    Decode.map2 Student
+    Decode.map3 Student
         (field "id" Decode.string)
         (field "name" Decode.string)
+        (field "subject" Decode.string)

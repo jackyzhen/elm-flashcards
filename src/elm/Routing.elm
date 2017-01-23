@@ -8,6 +8,8 @@ type Route
     = HomeRoute
     | ClientRoute
     | TutorRoute
+    | TutorStudentsRoute
+    | TutorFlashCardsRoute
     | NotFoundRoute
     | StudentPlayRoute
     | StudentHistoryRoute
@@ -19,6 +21,8 @@ matchers =
         [ map HomeRoute top
         , map ClientRoute (s "client")
         , map TutorRoute (s "tutor")
+        , map TutorStudentsRoute (s "tutor" </> s "students")
+        , map TutorFlashCardsRoute (s "tutor" </> s "flashcards")
         , map StudentPlayRoute (s "client" </> s "play")
         , map StudentHistoryRoute (s "history")
         ]

@@ -9,8 +9,8 @@ import Tutor.Models
 type alias Model =
     { route : Routing.Route
     , game : Game.Model.Model
-    , student : Maybe Student.Models.Student
     , tutor : Maybe Tutor.Models.Tutor
+    , students : Student.Models.Students
     }
 
 
@@ -18,6 +18,6 @@ initialModel : Routing.Route -> Model
 initialModel route =
     { route = route
     , game = Game.Model.initialModel
-    , student = Nothing
     , tutor = Nothing
+    , students = []
     }
