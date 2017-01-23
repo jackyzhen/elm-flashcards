@@ -15,20 +15,9 @@ type alias Model =
 
 initialModel : Model
 initialModel =
-    { flashCards =
-        [ { id = "1"
-          , question = "what is the capital of china?"
-          , answer = "Beijing"
-          , answerVisible = False
-          }
-          , { id = "2"
-          , question = "what is the capital of Brazil?"
-          , answer = "Brasilia"
-          , answerVisible = False
-          }
-        ]
+    { flashCards = []
     , currentInput = ""
-    , currentFlashCardId = Just "1"
+    , currentFlashCardId = Just ""
     , answeredFlashCardIds = []
     , validationMessage = Nothing
     , isGameComplete = False

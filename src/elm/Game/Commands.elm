@@ -7,8 +7,8 @@ import Game.Messages exposing (Msg)
 import Game.FlashCard exposing (Model)
 
 
-fetchStudent : Cmd Msg
-fetchStudent =
+fetchQuestions : Cmd Msg
+fetchQuestions =
     Http.get fetchQuestionsUrl collectionDecoder
         |> Http.send Game.Messages.OnFetchQuestions
 

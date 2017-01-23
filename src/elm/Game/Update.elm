@@ -2,7 +2,7 @@ module Game.Update exposing (..)
 import Game.FlashCard exposing (..)
 
 import Game.Messages exposing (Msg)
-import Game.Model exposing (Model)
+import Game.Model exposing (..)
 
 coerceString: Maybe String -> String
 coerceString m = case m of 
@@ -75,7 +75,11 @@ update msg model =
                   Nothing  -> (model, Cmd.none)
             )
         Game.Messages.OnFetchQuestions (Ok newFlashCards) ->
-          ({model | flashCards = newFlashCards}, Cmd.none) -- TODO: This should also update the current flash card?
+          ({model | flashCards = newFlashCards
+                  , currentFlashCardId = (newFlashCards 
+                                          |> List.head
+                                          |> getFlashCardId)
+            }, Cmd.none) 
         Game.Messages.OnFetchQuestions (Err error) ->
           (model, Cmd.none) --TODO: Do we actually do nothing if we cannot fetch questions?
         Game.Messages.NextFlashCard ->
@@ -91,4 +95,10 @@ update msg model =
               }
             , Cmd.none)
         Game.Messages.ResetGame ->
-          (Game.Model.initialModel, Cmd.none) --TODO: Is this okay? This seems like a pretty lazy implementation and it also nukes all of the existing questions?
+          ({initialModel 
+            | flashCards = List.map (\x -> {x | answerVisible = False}) model.flashCards
+            , currentFlashCardId = (model.flashCards
+                  |> List.head
+                  |> getFlashCardId)
+          }
+          , Cmd.none)
