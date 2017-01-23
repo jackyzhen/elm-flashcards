@@ -18,5 +18,9 @@ loadOnRouteChange route =
 
         TutorRoute ->
             Cmd.map TutorMsg fetchTutor
+
+        TutorStudentsRoute ->
+            Cmd.map StudentMsg fetchStudent
+
         _ ->
             Cmd.none

@@ -31,9 +31,9 @@ update msg model =
         StudentMsg subMsg ->
             let
                 ( updatedModel, cmd ) =
-                    Student.Update.update subMsg model.student
+                    Student.Update.update subMsg model.students
             in
-                ( { model | student = updatedModel }, Cmd.map StudentMsg cmd )
+                ( { model | students = updatedModel }, Cmd.map StudentMsg cmd )
 
         GameMsg subMsg ->
             let
