@@ -8,6 +8,7 @@ type alias Model =
     , currentInput : String
     , currentFlashCardId : String
     , answeredFlashCardIds : List String
+    , validationMessage: Maybe String
     }
 
 
@@ -19,8 +20,14 @@ inititialModel =
           , answer = "Beijing"
           , answerVisible = False
           }
+          , { id = "2"
+          , question = "what is the capital of Brazil?"
+          , answer = "Brasilia"
+          , answerVisible = False
+          }
         ]
     , currentInput = ""
     , currentFlashCardId = "1"
     , answeredFlashCardIds = []
+    , validationMessage = Nothing
     }
