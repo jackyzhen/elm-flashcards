@@ -2,14 +2,25 @@ module Student.View exposing (..)
 
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
-import Models exposing (Model)
+import Student.Models exposing (Student)
 import Student.Messages exposing (Msg(..))
 import Html.Events exposing (onClick)
 
 
-view : Model -> Html Msg
-view model =
+view : Maybe Student -> Html Msg
+view student =
     div [ class "container section" ]
-        [ div [ class "link title", onClick ShowPlay ] [ text "Play" ]
+        [ div [ class "subtitle section" ] [ studentDisplay student ]
+        , div [ class "link title", onClick ShowPlay ] [ text "Play" ]
         , div [ class "link title", onClick ShowHistory ] [ text "History" ]
         ]
+
+
+studentDisplay : Maybe Student -> Html Msg
+studentDisplay student =
+    case student of
+        Nothing ->
+            text ""
+
+        Just value ->
+            text ("Welcome " ++ value.name ++ "...")

@@ -22,7 +22,7 @@ page model =
             Html.map HomeMsg (Home.View.view model)
 
         ClientRoute ->
-            Html.map StudentMsg (Student.View.view model)
+            Html.map StudentMsg (Student.View.view model.student)
 
         TutorRoute ->
             tutorView

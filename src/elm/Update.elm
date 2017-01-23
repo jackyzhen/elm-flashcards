@@ -7,6 +7,7 @@ import Routing exposing (parseLocation)
 import Home.Update
 import Student.Update
 import Game.Update
+import Commands exposing (..)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -17,7 +18,7 @@ update msg model =
                 newRoute =
                     parseLocation location
             in
-                ( { model | route = newRoute }, Cmd.none )
+                ( { model | route = newRoute }, loadOnRouteChange newRoute )
 
         HomeMsg subMsg ->
             let
@@ -29,9 +30,9 @@ update msg model =
         StudentMsg subMsg ->
             let
                 ( updatedModel, cmd ) =
-                    Student.Update.update subMsg model
+                    Student.Update.update subMsg model.student
             in
-                ( updatedModel, Cmd.map StudentMsg cmd )
+                ( { model | student = updatedModel }, Cmd.map StudentMsg cmd )
 
         GameMsg subMsg ->
             let

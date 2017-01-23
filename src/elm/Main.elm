@@ -6,6 +6,7 @@ import Navigation exposing (Location)
 import Routing exposing (Route)
 import Update exposing (update)
 import View exposing (view)
+import Commands exposing (loadOnRouteChange)
 
 
 init : Location -> ( Model, Cmd Msg )
@@ -14,7 +15,7 @@ init location =
         currentRoute =
             Routing.parseLocation location
     in
-        ( initialModel currentRoute, Cmd.none )
+        ( initialModel currentRoute, loadOnRouteChange currentRoute )
 
 
 subscriptions : Model -> Sub Msg
