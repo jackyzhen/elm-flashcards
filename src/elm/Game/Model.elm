@@ -1,10 +1,10 @@
 module Game.Model exposing (..)
 
-import Components.FlashCard
+import Game.FlashCard
 
 
 type alias Model =
-    { flashCards : List Components.FlashCard.Model
+    { flashCards : List Game.FlashCard.Model
     , currentInput : String
     , currentFlashCardId : Maybe String
     , answeredFlashCardIds : List String

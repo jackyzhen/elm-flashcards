@@ -54,9 +54,15 @@
     },
     {
       "id": "2",
-      "question": "What is the formular for calculating the area of a circle?",
+      "question": "What is the formula for calculating the area of a circle?",
       "subjectId": "2",
       "answer": "A=πr2"
+    },
+    {
+      "id": "3",
+      "question": "What is the first freedom of Free Software?",
+      "subjectId": "3",
+      "answer": "The freedom to run the software as you wish, for any purpose."
     }
   ],
   "subjects": [
@@ -67,6 +73,10 @@
     {
       "id": "2",
       "name": "Math"
+    },
+    { 
+      "id": "3",
+      "name": "Software"
     }
   ]
 }

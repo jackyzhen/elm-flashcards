@@ -1,4 +1,4 @@
-module Components.FlashCard exposing (..)
+module Game.FlashCard exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)

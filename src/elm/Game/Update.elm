@@ -1,5 +1,5 @@
 module Game.Update exposing (..)
-import Components.FlashCard exposing (..)
+import Game.FlashCard exposing (..)
 
 import Game.Messages exposing (Msg)
 import Game.Model exposing (Model)
@@ -9,13 +9,13 @@ coerceString m = case m of
       Just s -> s
       Nothing -> ""
 
-getCurrentFlashCard: Game.Model.Model -> Maybe Components.FlashCard.Model
+getCurrentFlashCard: Game.Model.Model -> Maybe Game.FlashCard.Model
 getCurrentFlashCard model = 
   model.flashCards
   |> List.filter (\flashCard -> flashCard.id == (coerceString model.currentFlashCardId))
   |> List.head
 
-updateFlashCard: List Components.FlashCard.Model -> Components.FlashCard.Model -> List Components.FlashCard.Model
+updateFlashCard: List Game.FlashCard.Model -> Game.FlashCard.Model -> List Game.FlashCard.Model
 updateFlashCard list newFlashCard =
   let
     replace currentFlashCard =
@@ -26,7 +26,7 @@ updateFlashCard list newFlashCard =
   in
     List.map replace list
 
-getFlashCardId: Maybe Components.FlashCard.Model -> Maybe String
+getFlashCardId: Maybe Game.FlashCard.Model -> Maybe String
 getFlashCardId flashCard =
   case flashCard of
     Just fc -> Just fc.id
@@ -53,7 +53,7 @@ update msg model =
               Just flashCard -> 
                 let
                     ( updatedFlashCardModel, flashCardCmd ) =
-                        Components.FlashCard.update subMsg flashCard
+                        Game.FlashCard.update subMsg flashCard
                 in
                     ( { model | flashCards = (updateFlashCard model.flashCards updatedFlashCardModel)}, Cmd.map Game.Messages.FlashCardMsg flashCardCmd )
               Nothing  -> (model, Cmd.none)
@@ -74,8 +74,10 @@ update msg model =
                               , validationMessage = Nothing}, Cmd.none )
                   Nothing  -> (model, Cmd.none)
             )
-        Game.Messages.SwapOutFlashCards newFlashCards ->
+        Game.Messages.OnFetchQuestions (Ok newFlashCards) ->
           ({model | flashCards = newFlashCards}, Cmd.none) -- TODO: This should also update the current flash card?
+        Game.Messages.OnFetchQuestions (Err error) ->
+          (model, Cmd.none) --TODO: Do we actually do nothing if we cannot fetch questions?
         Game.Messages.NextFlashCard ->
           let
             nextFlashCardId = getNextFlashCardId model

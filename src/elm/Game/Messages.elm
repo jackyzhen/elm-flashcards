@@ -1,11 +1,13 @@
 module Game.Messages exposing (..)
 
-import Components.FlashCard exposing (Msg, Model)
+import Http exposing (Error)
+
+import Game.FlashCard exposing (Msg, Model)
 
 type Msg
-    = FlashCardMsg Components.FlashCard.Msg
+    = FlashCardMsg Game.FlashCard.Msg
     | OnAnswerSubmit
     | OnAnswerUpdated String
-    | SwapOutFlashCards (List Components.FlashCard.Model)
     | NextFlashCard 
     | ResetGame
+    | OnFetchQuestions (Result Http.Error (List Game.FlashCard.Model))

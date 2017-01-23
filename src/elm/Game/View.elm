@@ -3,7 +3,7 @@ module Game.View exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Components.FlashCard exposing (view)
+import Game.FlashCard exposing (view)
 import Game.Model exposing (Model)
 import Game.Messages exposing (Msg)
 import Game.Update exposing (getCurrentFlashCard)
@@ -17,7 +17,7 @@ getFlashCardView model =
         case flashCardMaybe of
             Just flashCard ->
                 div [] [
-                    Html.map Game.Messages.FlashCardMsg (Components.FlashCard.view flashCard),
+                    Html.map Game.Messages.FlashCardMsg (Game.FlashCard.view flashCard),
                     (case model.validationMessage of
                     Just message -> div [ class "validationMessage" ] [ text message ]
                     Nothing -> text ""),
