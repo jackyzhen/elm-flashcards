@@ -4,10 +4,15 @@ import Components.FlashCard exposing (..)
 import Game.Messages exposing (Msg)
 import Game.Model exposing (Model)
 
+coerceString: Maybe String -> String
+coerceString m = case m of 
+      Just s -> s
+      Nothing -> ""
+
 getCurrentFlashCard: Game.Model.Model -> Maybe Components.FlashCard.Model
 getCurrentFlashCard model = 
   model.flashCards
-  |> List.filter (\flashCard -> flashCard.id == model.currentFlashCardId)
+  |> List.filter (\flashCard -> flashCard.id == (coerceString model.currentFlashCardId))
   |> List.head
 
 updateFlashCard: List Components.FlashCard.Model -> Components.FlashCard.Model -> List Components.FlashCard.Model
@@ -30,7 +35,7 @@ getFlashCardId flashCard =
 getNextFlashCardId: Game.Model.Model -> Maybe String
 getNextFlashCardId model =
   let usedFlashCardIds = 
-    model.currentFlashCardId :: model.answeredFlashCardIds
+    (coerceString model.currentFlashCardId) :: model.answeredFlashCardIds
   in
     model.flashCards
     |> List.filter (\x -> (not (List.member x.id usedFlashCardIds)))
@@ -65,14 +70,14 @@ update msg model =
               in
                 case flashCardMaybe of
                   Just flashCard -> 
-                    ( { model | flashCards = (updateFlashCard model.flashCards {flashCard | answerVisible = True })}, Cmd.none )
+                    ( { model | flashCards = (updateFlashCard model.flashCards {flashCard | answerVisible = True })
+                              , validationMessage = Nothing}, Cmd.none )
                   Nothing  -> (model, Cmd.none)
             )
         Game.Messages.SwapOutFlashCards newFlashCards ->
           ({model | flashCards = newFlashCards}, Cmd.none)
         Game.Messages.NextFlashCard ->
-          ({ model | currentFlashCardId = 
-                      case (getNextFlashCardId model) of
-                        Just id -> id 
-                        Nothing -> ""
-                    ,answeredFlashCardIds = model.currentFlashCardId :: model.answeredFlashCardIds}, Cmd.none)
+          ({ model | currentFlashCardId = (getNextFlashCardId model)
+                    ,answeredFlashCardIds = (coerceString model.currentFlashCardId) :: model.answeredFlashCardIds
+            }
+          , Cmd.none)

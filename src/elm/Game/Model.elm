@@ -6,7 +6,7 @@ import Components.FlashCard
 type alias Model =
     { flashCards : List Components.FlashCard.Model
     , currentInput : String
-    , currentFlashCardId : String
+    , currentFlashCardId : Maybe String
     , answeredFlashCardIds : List String
     , validationMessage: Maybe String
     }
@@ -27,7 +27,7 @@ inititialModel =
           }
         ]
     , currentInput = ""
-    , currentFlashCardId = "1"
+    , currentFlashCardId = Just "1"
     , answeredFlashCardIds = []
     , validationMessage = Nothing
     }
