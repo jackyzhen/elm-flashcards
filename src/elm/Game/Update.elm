@@ -133,4 +133,4 @@ update msg model =
                   |> List.head
                   |> getFlashCardId)
           }
-          , Cmd.none)
+          , Game.Commands.fetchSessions)
