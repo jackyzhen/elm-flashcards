@@ -10,6 +10,6 @@ import Html.Events exposing (onClick)
 view : Model -> Html Msg
 view model =
     div [ class "container section" ]
-        [ div [ onClick ShowClient, class "home-link title" ] [ text "Student" ]
-        , div [ onClick ShowTutor, class "home-link title" ] [ text "Tutors" ]
+        [ div [ onClick ShowClient, class "link title" ] [ text "Student" ]
+        , div [ onClick ShowTutor, class "link title" ] [ text "Tutors" ]
         ]

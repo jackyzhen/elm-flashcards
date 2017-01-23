@@ -5,6 +5,7 @@ import Messages exposing (Msg(..))
 import Models exposing (Model)
 import Routing exposing (Route(..))
 import Home.View
+import Student.View
 
 
 view : Model -> Html Msg
@@ -20,10 +21,16 @@ page model =
             Html.map HomeMsg (Home.View.view model)
 
         ClientRoute ->
-            studentView
+            Html.map StudentMsg (Student.View.view model)
 
         TutorRoute ->
             tutorView
+
+        StudentPlayRoute ->
+            notFoundView
+
+        StudentHistoryRoute ->
+            notFoundView
 
         NotFoundRoute ->
             notFoundView

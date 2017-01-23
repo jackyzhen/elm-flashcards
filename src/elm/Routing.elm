@@ -9,6 +9,8 @@ type Route
     | ClientRoute
     | TutorRoute
     | NotFoundRoute
+    | StudentPlayRoute
+    | StudentHistoryRoute
 
 
 matchers : Parser (Route -> a) a
@@ -17,6 +19,8 @@ matchers =
         [ map HomeRoute top
         , map ClientRoute (s "client")
         , map TutorRoute (s "tutor")
+        , map StudentPlayRoute (s "play")
+        , map StudentHistoryRoute (s "history")
         ]
 
 
