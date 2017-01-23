@@ -8,3 +8,4 @@ type Msg
     | OnAnswerUpdated String
     | SwapOutFlashCards (List Components.FlashCard.Model)
     | NextFlashCard 
+    | ResetGame

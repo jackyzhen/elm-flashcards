@@ -9,6 +9,7 @@ type alias Model =
     , currentFlashCardId : Maybe String
     , answeredFlashCardIds : List String
     , validationMessage: Maybe String
+    , isGameComplete: Bool
     }
 
 
@@ -30,4 +31,5 @@ inititialModel =
     , currentFlashCardId = Just "1"
     , answeredFlashCardIds = []
     , validationMessage = Nothing
+    , isGameComplete = False
     }

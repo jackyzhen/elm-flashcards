@@ -77,7 +77,16 @@ update msg model =
         Game.Messages.SwapOutFlashCards newFlashCards ->
           ({model | flashCards = newFlashCards}, Cmd.none)
         Game.Messages.NextFlashCard ->
-          ({ model | currentFlashCardId = (getNextFlashCardId model)
-                    ,answeredFlashCardIds = (coerceString model.currentFlashCardId) :: model.answeredFlashCardIds
-            }
-          , Cmd.none)
+          let
+            nextFlashCardId = getNextFlashCardId model
+          in
+            ({ model | currentFlashCardId = nextFlashCardId
+                      ,answeredFlashCardIds = (coerceString model.currentFlashCardId) :: model.answeredFlashCardIds
+                      ,isGameComplete = (case nextFlashCardId of
+                                          Just id -> False
+                                          Nothing -> True
+                                        )
+              }
+            , Cmd.none)
+        Game.Messages.ResetGame ->
+          (model, Cmd.none) --TODO: Implement this function properly.
