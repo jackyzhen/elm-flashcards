@@ -3,6 +3,7 @@ module Flashcards.List exposing (..)
 import Flashcards.Models exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (..)
 import Flashcards.Messages exposing (Msg(..))
 
 
@@ -24,7 +25,7 @@ view flashcards =
 
 flashcardRow : Flashcard -> Html Msg
 flashcardRow flashcard =
-    tr []
+    tr [ class "link", onClick (ViewEditFlashcard flashcard.id) ]
         [ td [] [ text flashcard.subject ]
         , td [] [ text flashcard.question ]
         , td [] [ text flashcard.answer ]

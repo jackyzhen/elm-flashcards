@@ -17,7 +17,7 @@ loadOnRouteChange route =
 
         StudentPlayRoute ->
             Cmd.batch [ Game.Commands.fetchQuestions, Game.Commands.fetchSessions]
-            |> Cmd.map GameMsg
+                |> Cmd.map GameMsg
 
         TutorRoute ->
             Cmd.map TutorMsg fetchTutor
@@ -31,6 +31,9 @@ loadOnRouteChange route =
         StudentHistoryRoute ->
             Cmd.batch [ History.Commands.fetchQuestions, History.Commands.fetchAnswers ]
             |> Cmd.map HistoryMsg
+
+        EditFlashCardRoute id ->
+            Cmd.map FlashcardMsg fetchFlashcards
 
         _ ->
             Cmd.none
