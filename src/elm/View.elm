@@ -60,7 +60,7 @@ flashcardEditPage model flashcardId =
     in
         case maybeFlashcard of
             Just card ->
-                Html.map FlashcardMsg (Flashcards.Single.view card)
+                Html.map FlashcardMsg (Flashcards.Single.view card model)
 
             Nothing ->
                 notFoundView

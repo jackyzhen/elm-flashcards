@@ -13,6 +13,7 @@ type alias Model =
     , tutor : Maybe Tutor.Models.Tutor
     , students : Student.Models.Students
     , flashcards : List Flashcards.Models.Flashcard
+    , currentFlashCard : Flashcards.Models.Flashcard
     }
 
 
@@ -23,4 +24,5 @@ initialModel route =
     , tutor = Nothing
     , students = []
     , flashcards = []
+    , currentFlashCard = Flashcards.Models.Flashcard "" "" "" ""
     }

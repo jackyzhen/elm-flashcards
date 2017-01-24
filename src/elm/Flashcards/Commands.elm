@@ -2,6 +2,7 @@ module Flashcards.Commands exposing (..)
 
 import Http
 import Json.Decode as Decode exposing (field)
+import Json.Encode as Encode
 import Flashcards.Models exposing (Flashcard)
 import Flashcards.Messages exposing (..)
 
@@ -29,3 +30,41 @@ memberDecoder =
         (field "question" Decode.string)
         (field "subject" Decode.string)
         (field "answer" Decode.string)
+
+
+saveUrl : Flashcards.Models.FlashcardId -> String
+saveUrl flashcardId =
+    fetchFlashcardsUrl ++ "/" ++ flashcardId
+
+
+save : Flashcard -> Cmd Msg
+save flashcard =
+    saveRequest flashcard
+        |> Http.send OnSaveFlashcard
+
+
+saveRequest : Flashcard -> Http.Request Flashcard
+saveRequest flashcard =
+    Http.request
+        { body = memberEncoded flashcard |> Http.jsonBody
+        , expect = Http.expectJson memberDecoder
+        , headers = []
+        , method = "PATCH"
+        , timeout = Nothing
+        , url = saveUrl flashcard.id
+        , withCredentials = False
+        }
+
+
+memberEncoded : Flashcard -> Encode.Value
+memberEncoded flashcard =
+    let
+        list =
+            [ ( "id", Encode.string flashcard.id )
+            , ( "question", Encode.string flashcard.question )
+            , ( "answer", Encode.string flashcard.answer )
+            , ( "subject", Encode.string flashcard.subject )
+            ]
+    in
+        list
+            |> Encode.object

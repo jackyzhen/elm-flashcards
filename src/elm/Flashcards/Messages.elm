@@ -8,3 +8,5 @@ type Msg
     = OnFetchFlashcards (Result Http.Error (List Flashcard))
     | ViewEditFlashcard FlashcardId
     | ShowFlashCards
+    | OnSaveFlashcard (Result Http.Error Flashcard)
+    | UpdateCard Flashcard
