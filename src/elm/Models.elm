@@ -7,14 +7,14 @@ import Tutor.Models
 import Flashcards.Models
 import History.Models
 
+
 type alias Model =
     { route : Routing.Route
     , game : Game.Model.Model
     , tutor : Maybe Tutor.Models.Tutor
     , students : Student.Models.Students
-    , flashcards : List Flashcards.Models.Flashcard
+    , flashcards : Flashcards.Models.FlashCardsModel
     , historyModel : History.Models.HistoryModel
-    , currentFlashCard : Flashcards.Models.Flashcard
     }
 
 
@@ -24,7 +24,6 @@ initialModel route =
     , game = Game.Model.initialModel
     , tutor = Nothing
     , students = []
-    , flashcards = []
+    , flashcards = Flashcards.Models.FlashCardsModel [] (Flashcards.Models.Flashcard "" "" "" "")
     , historyModel = History.Models.initialModel
-    , currentFlashCard = Flashcards.Models.Flashcard "" "" "" ""
     }

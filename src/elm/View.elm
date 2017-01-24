@@ -39,7 +39,7 @@ page model =
             Html.map StudentMsg (Student.View.listView model.students)
 
         TutorFlashCardsRoute ->
-            Html.map FlashcardMsg (Flashcards.List.view model.flashcards)
+            Html.map FlashcardMsg (Flashcards.List.view model.flashcards.currentList)
 
         EditFlashCardRoute flashcardId ->
             flashcardEditPage model flashcardId
@@ -55,13 +55,13 @@ flashcardEditPage : Model -> FlashcardId -> Html Msg
 flashcardEditPage model flashcardId =
     let
         maybeFlashcard =
-            model.flashcards
+            model.flashcards.currentList
                 |> List.filter (\card -> card.id == flashcardId)
                 |> List.head
     in
         case maybeFlashcard of
             Just card ->
-                Html.map FlashcardMsg (Flashcards.Single.view card model)
+                Html.map FlashcardMsg (Flashcards.Single.view model.flashcards)
 
             Nothing ->
                 notFoundView

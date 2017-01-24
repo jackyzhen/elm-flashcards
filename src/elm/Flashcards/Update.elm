@@ -1,16 +1,16 @@
 module Flashcards.Update exposing (..)
 
 import Flashcards.Messages exposing (Msg(..))
-import Flashcards.Models exposing (Flashcard)
+import Flashcards.Models exposing (Flashcard, FlashCardsModel)
 import Navigation
 import Flashcards.Commands
 
 
-update : Msg -> List Flashcard -> ( List Flashcard, Cmd Msg )
+update : Msg -> FlashCardsModel -> ( FlashCardsModel, Cmd Msg )
 update message flashcards =
     case message of
-        OnFetchFlashcards (Ok flashcards) ->
-            ( flashcards, Cmd.none )
+        OnFetchFlashcards (Ok fc) ->
+            ( { flashcards | currentList = fc }, Cmd.none )
 
         OnFetchFlashcards (Err error) ->
             ( flashcards, Cmd.none )
@@ -22,10 +22,10 @@ update message flashcards =
             ( flashcards, Navigation.newUrl "/tutor/flashcards/" )
 
         UpdateCard flashcard ->
-            ( flashcards, updateFlashcardCommands flashcard flashcards |> Cmd.batch )
+            ( flashcards, updateFlashcardCommands flashcard flashcards.currentList |> Cmd.batch )
 
         OnSaveFlashcard (Ok updatedCard) ->
-            ( updateFlashcard updatedCard flashcards, Cmd.none )
+            ( { flashcards | currentList = updateFlashcard updatedCard flashcards.currentList }, Cmd.none )
 
         OnSaveFlashcard (Err error) ->
             ( flashcards, Cmd.none )

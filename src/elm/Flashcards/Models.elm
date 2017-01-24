@@ -11,3 +11,9 @@ type alias Flashcard =
     , subject : String
     , answer : String
     }
+
+
+type alias FlashCardsModel =
+    { currentList : List Flashcard
+    , currentEditCard : Flashcard
+    }
