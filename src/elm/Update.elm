@@ -8,6 +8,7 @@ import Home.Update
 import Student.Update
 import Game.Update
 import Tutor.Update
+import History.Update
 import Flashcards.Update
 import Commands exposing (..)
 
@@ -56,3 +57,10 @@ update msg model =
                     Flashcards.Update.update subMsg model.flashcards
             in
                 ( { model | flashcards = updatedModel }, Cmd.map FlashcardMsg cmd )
+
+        HistoryMsg subMsg ->
+            let
+                ( updatedModel, cmd ) =
+                    History.Update.update subMsg model.historyModel
+            in
+                ( { model | historyModel = updatedModel }, Cmd.map HistoryMsg cmd )

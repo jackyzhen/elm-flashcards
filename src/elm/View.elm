@@ -9,6 +9,7 @@ import Student.View
 import Tutor.View
 import Game.View
 import Flashcards.List
+import History.View
 import Flashcards.Models exposing (FlashcardId)
 import Flashcards.Single
 
@@ -44,7 +45,7 @@ page model =
             flashcardEditPage model flashcardId
 
         StudentHistoryRoute ->
-            notFoundView
+            Html.map HistoryMsg (History.View.view model.historyModel)
 
         NotFoundRoute ->
             notFoundView

@@ -26,7 +26,7 @@ matchers =
         , map TutorFlashCardsRoute (s "tutor" </> s "flashcards")
         , map EditFlashCardRoute (s "tutor" </> s "flashcards" </> string)
         , map StudentPlayRoute (s "client" </> s "play")
-        , map StudentHistoryRoute (s "history")
+        , map StudentHistoryRoute (s "client" </> s "history")
         ]
 
 
