@@ -42,29 +42,13 @@ page model =
             Html.map FlashcardMsg (Flashcards.List.view model.flashcards.currentList)
 
         EditFlashCardRoute flashcardId ->
-            flashcardEditPage model flashcardId
+            Html.map FlashcardMsg (Flashcards.Single.view model.flashcards)
 
         StudentHistoryRoute ->
             Html.map HistoryMsg (History.View.view model.historyModel)
 
         NotFoundRoute ->
             notFoundView
-
-
-flashcardEditPage : Model -> FlashcardId -> Html Msg
-flashcardEditPage model flashcardId =
-    let
-        maybeFlashcard =
-            model.flashcards.currentList
-                |> List.filter (\card -> card.id == flashcardId)
-                |> List.head
-    in
-        case maybeFlashcard of
-            Just card ->
-                Html.map FlashcardMsg (Flashcards.Single.view model.flashcards)
-
-            Nothing ->
-                notFoundView
 
 
 notFoundView : Html msg

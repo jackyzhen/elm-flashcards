@@ -8,3 +8,4 @@ type Msg
     = ShowPlay
     | ShowHistory
     | OnFetchStudent (Result Http.Error (List Student))
+    | ShowTutor

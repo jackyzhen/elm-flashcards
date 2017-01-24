@@ -14,6 +14,9 @@ update message students =
         ShowHistory ->
             ( students, Navigation.newUrl "/client/history" )
 
+        ShowTutor ->
+            ( students, Navigation.newUrl "/tutor/" )
+
         OnFetchStudent (Ok students) ->
             ( students, Cmd.none )
 

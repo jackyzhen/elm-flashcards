@@ -10,3 +10,8 @@ type Msg
     | ShowFlashCards
     | OnSaveFlashcard (Result Http.Error Flashcard)
     | UpdateCard Flashcard
+    | UpdateQuestion String
+    | UpdateSubject String
+    | UpdateAnswer String
+    | ShowTutor
+    | OnFetchFlashcardsWithId FlashcardId (Result Http.Error (List Flashcard))

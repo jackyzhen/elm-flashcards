@@ -3,8 +3,14 @@ module Flashcards.Commands exposing (..)
 import Http
 import Json.Decode as Decode exposing (field)
 import Json.Encode as Encode
-import Flashcards.Models exposing (Flashcard)
+import Flashcards.Models exposing (Flashcard, FlashcardId)
 import Flashcards.Messages exposing (..)
+
+
+fetchFlashcardsWithId : FlashcardId -> Cmd Msg
+fetchFlashcardsWithId id =
+    Http.get fetchFlashcardsUrl collectionDecoder
+        |> Http.send (OnFetchFlashcardsWithId id)
 
 
 fetchFlashcards : Cmd Msg

@@ -10,7 +10,8 @@ import Flashcards.Messages exposing (Msg(..))
 view : List Flashcard -> Html Msg
 view flashcards =
     div [ class "container section" ]
-        [ table [ class "table" ]
+        [ div [ class "nav" ] [ button [ class "button is-link", onClick ShowTutor ] [ text "<-Tutor" ] ]
+        , table [ class "table" ]
             [ thead []
                 [ tr []
                     [ th [] [ text "Subject" ]
