@@ -19,9 +19,9 @@ getFlashCardView model =
                 div [] [
                     Html.map Game.Messages.FlashCardMsg (Game.FlashCard.view flashCard),
                     (case model.validationMessage of
-                    Just message -> div [ class "validationMessage" ] [ text message ]
+                    Just message -> div [ class "container validationMessage" ] [ text message ]
                     Nothing -> text ""),
-                    div [ class "" ] [
+                    div [ class "container inputContainer" ] [
                       input [ class "control answerBox input", placeholder "Enter your answer", onInput Game.Messages.OnAnswerUpdated ] [],
                       button [ class "control submitButton button is-primary", onClick Game.Messages.OnAnswerSubmit ] [text "Submit"],
                       (if flashCard.answerVisible 
