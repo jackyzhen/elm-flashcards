@@ -9,6 +9,7 @@ import Student.View
 import Tutor.View
 import Game.View
 import Flashcards.List
+import History.View
 
 
 view : Model -> Html Msg
@@ -39,7 +40,7 @@ page model =
             Html.map FlashcardMsg (Flashcards.List.view model.flashcards)
 
         StudentHistoryRoute ->
-            notFoundView
+            Html.map HistoryMsg (History.View.view model.historyModel)
 
         NotFoundRoute ->
             notFoundView

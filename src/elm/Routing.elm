@@ -24,7 +24,7 @@ matchers =
         , map TutorStudentsRoute (s "tutor" </> s "students")
         , map TutorFlashCardsRoute (s "tutor" </> s "flashcards")
         , map StudentPlayRoute (s "client" </> s "play")
-        , map StudentHistoryRoute (s "history")
+        , map StudentHistoryRoute (s "client" </> s "history")
         ]
 
 

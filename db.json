@@ -73,16 +73,6 @@
   ],
   "answers": [
     {
-      "sessionId": "1",
-      "questionId": "1",
-      "answer": "Shanghai?"
-    },
-    {
-      "sessionId": "1",
-      "questionId": "2",
-      "answer": "2 * pi * radius?"
-    },
-    {
       "sessionId": "9",
       "questionId": "1",
       "answer": "Beijing",

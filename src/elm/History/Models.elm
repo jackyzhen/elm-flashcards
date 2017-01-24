@@ -13,3 +13,10 @@ type alias HistoryModel = {
   answers: List Answer,
   questions: List Question
 }
+
+initialModel: HistoryModel
+initialModel = 
+  {
+    answers = [],
+    questions = []
+  }

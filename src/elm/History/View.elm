@@ -2,16 +2,37 @@ module History.View exposing (..)
 
 import Html exposing (Html, div, text, button, table, thead, tbody, th, tr, td, abbr)
 import Html.Attributes exposing (class, title)
-import History.Models exposing (AnswerModel)
+import History.Models exposing (AnswerModel, HistoryModel)
 import History.Messages exposing (Msg(..))
-import Html.Events exposing (onClick)
+import Models.Answer exposing (Answer)
+import Models.Question exposing (Question)
 
+getQuestionTextForAnswer: List Question -> String -> String
+getQuestionTextForAnswer questions answerId = 
+  questions
+  |> List.filter (\q -> q.id == answerId)
+  |> List.head
+  |> Maybe.map (\q -> q.question)
+  |> Maybe.withDefault "Question Not Available"
 
-view : List AnswerModel -> Html Msg
-view answers =
+getAnswerModels: List Answer -> List Question -> List AnswerModel
+getAnswerModels answers questions =
+  let
+    questionRetriever = getQuestionTextForAnswer questions
+  in
+    answers
+    |> List.map (\a -> (AnswerModel 
+                          a.id 
+                          (questionRetriever a.questionId) 
+                          a.answer 
+                          a.sessionId) )
+
+view : HistoryModel -> Html Msg
+view model =
     div [ class "container section" ]
         [ 
-          text ""
+          getAnswerModels model.answers model.questions
+          |> listView
         ]
 
 
@@ -32,7 +53,7 @@ listView answers =
         ]
 
 
-listViewRow : Answer -> Html Msg
+listViewRow : AnswerModel -> Html Msg
 listViewRow answer =
     tr []
         [ td [] [ text answer.sessionId ]
