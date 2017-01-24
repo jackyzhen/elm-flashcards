@@ -1,13 +1,11 @@
 # elm-todo
-A flash cards app to help studying. Built with  Elm, bootstrapped via [https://github.com/moarwick/elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter)
+A flash cards app to help with studying. Built with  Elm, bootstrapped via [elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter)
 
 
 ## Usage
 
-`npm run reinstall` to install npm and elm packages for the first time. Subsequently can use `yarn`.
+For easy running, install [node-foreman](https://github.com/strongloop/node-foreman) globally. Then run `nf start`.
 
-`npm start` to run webpack dev.
+`npm start` to run webpack dev server.
 
-`npm run build` to build static prod distributions.
-
-`npm run deploy` builds and deploys to zeit.now.
+`npm run api` to start simple [json-server](https://github.com/typicode/json-server) back end.
