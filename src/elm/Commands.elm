@@ -6,6 +6,7 @@ import Tutor.Commands exposing (..)
 import Flashcards.Commands exposing (..)
 import Routing exposing (Route(..))
 import Messages exposing (Msg(..))
+import History.Commands exposing (..)
 
 
 loadOnRouteChange : Route -> Cmd Msg
@@ -15,7 +16,7 @@ loadOnRouteChange route =
             Cmd.map StudentMsg fetchStudent
 
         StudentPlayRoute ->
-            Cmd.batch [ fetchQuestions, fetchSessions]
+            Cmd.batch [ Game.Commands.fetchQuestions, Game.Commands.fetchSessions]
             |> Cmd.map GameMsg
 
         TutorRoute ->
@@ -26,6 +27,10 @@ loadOnRouteChange route =
 
         TutorFlashCardsRoute ->
             Cmd.map FlashcardMsg fetchFlashcards
+            
+        StudentHistoryRoute ->
+            Cmd.batch [ History.Commands.fetchQuestions, History.Commands.fetchAnswers ]
+            |> Cmd.map HistoryMsg
 
         _ ->
             Cmd.none
